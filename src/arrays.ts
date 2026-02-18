@@ -1,3 +1,5 @@
+import { listenerCount } from "node:events";
+
 /**
  * Consume an array of numbers, and return a new array containing
  * JUST the first and last number. If there are no elements, return
@@ -5,7 +7,15 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    if (numbers.length === 0) {
+        return [];
+    }
+    if (numbers.length === 1) {
+        const newarr: number[] = [numbers[0], numbers[0]];
+        return newarr;
+    }
+    const newarray: number[] = [numbers[0], numbers[numbers.length - 1]];
+    return newarray;
 }
 
 /**
@@ -34,7 +44,12 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const newarr: number[] = amounts.map((amount: string) =>
+        amount.at(0) === "$" ?
+            parseInt(amount.slice(1)) || 0
+        :   parseInt(amount) || 0,
+    );
+    return newarr;
 };
 
 /**
@@ -67,7 +82,18 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return true;
+    if (colors.length === 0) {
+        return true;
+    }
+    const result = colors.filter(
+        (color: string) =>
+            color !== "red" && color !== "blue" && color !== "green",
+    );
+    if (result.length === 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**
@@ -78,7 +104,12 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    if (addends.length === 0) {
+        return "0=0";
+    }
+    const total: number = addends.reduce((sum, num: number) => sum + num);
+
+    return total + "=" + addends.join("+");
 }
 
 /**
@@ -91,5 +122,13 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const index: number = values.findIndex((num: number) => num < 0);
+    const onlyPos = index === -1 ? values : values.slice(0, index);
+    const newvalue: number = onlyPos.reduce(
+        (sum, value: number) => sum + value,
+        0,
+    );
+    const result = [...values];
+    result.splice(index === -1 ? values.length : index + 1, 0, newvalue);
+    return result;
 }
