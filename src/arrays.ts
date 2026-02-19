@@ -126,7 +126,12 @@ export function injectPositive(values: number[]): number[] {
         (sum, value: number) => sum + value,
         0,
     );
-    const result = [...values];
-    result.splice(index === -1 ? values.length : index + 1, 0, newvalue);
-    return result;
+    if (index === -1) {
+        return [...values, newvalue];
+    }
+    return [
+        ...values.slice(0, index + 1),
+        newvalue,
+        ...values.slice(index + 1),
+    ];
 }
