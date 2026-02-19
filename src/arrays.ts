@@ -30,7 +30,7 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    let newList: number[] = numbers.map((num: number) => parseInt(num) || 0);
+    let newList: number[] = numbers.map((num: string) => parseInt(num) || 0);
     return newList;
 }
 
