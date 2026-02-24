@@ -1,4 +1,3 @@
-import Q from "q";
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
@@ -46,13 +45,7 @@ export function isValid(question: Question, answer: string): boolean {
     if (question.type === "short_answer_question") {
         return true;
     }
-    if (
-        question.type === "multiple_choice_question" &&
-        question.options.includes(answer)
-    ) {
-        return true;
-    }
-    return false;
+    return question.options.includes(answer);
 }
 
 /**
