@@ -37,7 +37,7 @@ export function findQuestion(
     const foundQuestionArr: Question[] = questions.filter(
         (question: Question) => question.id === id,
     );
-    const foundQuestion: Question[] | null =
+    const foundQuestion: Question | null =
         foundQuestionArr.length !== 0 ? foundQuestionArr[0] : null;
     return foundQuestion;
 }
@@ -194,12 +194,7 @@ export function addNewQuestion(
         points: question.points,
         published: question.published,
     }));
-    const newBlankQuestion: Question = {
-        ...makeBlankQuestion(),
-        id: id,
-        name: name,
-        type: type,
-    };
+    const newBlankQuestion: Question = makeBlankQuestion(id, name, type);
     return [...newQuestions, newBlankQuestion];
 }
 
