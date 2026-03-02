@@ -193,6 +193,7 @@ export function addNewQuestion(
         options: question.options,
         points: question.points,
         published: question.published,
+        //...question works better
     }));
     const newBlankQuestion: Question = makeBlankQuestion(id, name, type);
     return [...newQuestions, newBlankQuestion];
