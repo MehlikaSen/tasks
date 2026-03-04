@@ -7,43 +7,43 @@ export function CycleHoliday(): React.JSX.Element {
 
     const changeHolidayAlphabetically = () => {
         setHoliday((prev) =>
-            prev === "🎄"
-                ? "🐣"
-                : prev === "🐣"
-                  ? "🎆"
-                  : prev === "🎆"
-                    ? "🍾"
-                    : prev === "🍾"
-                      ? "❤️"
-                      : prev === "❤️"
-                        ? "🎄"
-                        : "invalid"
+            prev === "🎄" ? "🐣"
+            : prev === "🐣" ? "🎆"
+            : prev === "🎆" ? "🍾"
+            : prev === "🍾" ? "❤️"
+            : prev === "❤️" ? "🎄"
+            : "invalid",
         );
     };
 
     const changeHolidayDate = () => {
         setHoliday((prev) =>
-            prev === "🎄"
-                ? "🍾"
-                : prev === "🍾"
-                  ? "❤️"
-                  : prev === "❤️"
-                    ? "🐣"
-                    : prev === "🐣"
-                      ? "🎆"
-                      : prev === "🎆"
-                        ? "🎄"
-                        : "invalid"
+            prev === "🎄" ? "🍾"
+            : prev === "🍾" ? "❤️"
+            : prev === "❤️" ? "🐣"
+            : prev === "🐣" ? "🎆"
+            : prev === "🎆" ? "🎄"
+            : "invalid",
         );
     };
 
     return (
         <div>
             {<div>Holiday: {holiday}</div>}
-            <Button onClick={() => changeHolidayAlphabetically()}>
+            <Button
+                onClick={() => {
+                    changeHolidayAlphabetically();
+                }}
+            >
                 Advance Alphabet
             </Button>
-            <Button onClick={() => changeHolidayDate()}>Advance Year</Button>
+            <Button
+                onClick={() => {
+                    changeHolidayDate();
+                }}
+            >
+                Advance Year
+            </Button>
         </div>
     );
 }
