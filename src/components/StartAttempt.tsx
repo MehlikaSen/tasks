@@ -25,7 +25,9 @@ export function StartAttempt(): React.JSX.Element {
                     Start Quiz
                 </Button>
                 <Button
-                    onClick={() => setAttempts((prev) => prev + 1)}
+                    onClick={() => {
+                        setAttempts((prev) => prev + 1);
+                    }}
                     disabled={!quizRunning ? false : true}
                 >
                     Mulligan
