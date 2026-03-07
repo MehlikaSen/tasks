@@ -19,7 +19,7 @@ function App(): React.JSX.Element {
                 <h1> This is header text!</h1>
             </header>
             <hr></hr>
-            {/* <DoubleHalf></DoubleHalf> */}
+            <DoubleHalf></DoubleHalf>
             <hr></hr>
             <ChooseTeam></ChooseTeam>
             <hr></hr>
